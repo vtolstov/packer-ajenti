@@ -12,9 +12,9 @@
       "headless": true,
       "http_directory": "http",
       "iso_checksum_type": "none",
-      "iso_url": "output/ajenty-base-x86_64-qemu/ajenty-base-x86_64.raw",
+      "iso_url": "output/ajenti-base-x86_64-qemu/ajenti-base-x86_64.raw",
       "net_device": "virtio-net",
-      "output_directory": "output/ajenty-current-x86_64-qemu/",
+      "output_directory": "output/ajenti-1.2-x86_64-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
@@ -27,7 +27,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ajenty-current-x86_64-qemu/ajenty-current-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ajenti-1.2-x86_64-qemu/ajenti-1.2-x86_64.raw"
         ],
         [
           "-device",
@@ -43,14 +43,14 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "ajenty-current-x86_64"
+      "vm_name": "ajenti-1.2-x86_64"
     }
   ],
   "provisioners": [
     {
       "scripts": [
         "scripts/diskfix.sh",
-        "scripts/ajenty.sh",
+        "scripts/ajenti.sh",
         "scripts/cloud.sh",
         "scripts/grubfix.sh"
       ],
@@ -62,7 +62,7 @@
       {
         "type": "compress",
         "format": "pgzip",
-        "output": "output/ajenty-current-x86_64-compress/",
+        "output": "output/ajenti-1.2-x86_64-compress/",
         "only": ["qemu"]
       }
     ]
