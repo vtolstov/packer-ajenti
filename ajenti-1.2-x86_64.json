@@ -52,7 +52,8 @@
         "scripts/diskfix.sh",
         "scripts/ajenti.sh",
         "scripts/cloud.sh",
-        "scripts/grubfix.sh"
+        "scripts/grubfix.sh",
+        "scripts/cloudinit-config.sh"
       ],
       "type": "shell"
     }
