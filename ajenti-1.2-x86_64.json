@@ -62,7 +62,7 @@
     [
       {
         "type": "compress",
-        "format": "pgzip",
+        "format": "bgzf",
         "output": "output/ajenti-1.2-x86_64-compress/",
         "only": ["qemu"]
       }
