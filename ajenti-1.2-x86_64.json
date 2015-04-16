@@ -2,24 +2,44 @@
   "builders": [
     {
       "accelerator": "kvm",
-      "boot_command": [],
+      "boot_command": [
+        "<esc><esc><enter><wait>",
+        "/install/vmlinuz auto",
+        " console-setup/ask_detect=false <wait>",
+        " console-setup/layoutcode=us <wait>",
+        " console-setup/modelcode=pc105 <wait>",
+        " debconf/frontend=noninteractive <wait>",
+        " debian-installer=en_US <wait>",
+        " fb=false",
+        " initrd=/install/initrd.gz",
+        " kbd-chooser/method=us",
+        " keyboard-configuration/layout=USA <wait>",
+        " keyboard-configuration/variant=USA <wait>",
+        " locale=en_US <wait>",
+        " netcfg/get_domain=localdomain <wait>",
+        " netcfg/get_hostname=localhost <wait>",
+        " noapic <wait>",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/14.04.cfg",
+        " -- ",
+        "<enter>"
+      ],
       "boot_wait": "5s",
       "disk_interface": "scsi",
       "disk_size": 5000,
-      "disk_image": true,
       "disk_cache": "unsafe",
       "format": "raw",
       "headless": true,
       "http_directory": "http",
-      "iso_checksum_type": "none",
-      "iso_url": "output/ajenti-base-x86_64-qemu/ajenti-base-x86_64.raw",
+      "iso_checksum": "4d94f6111b8fe47da94396180ce499d8c0bb44f3",
+      "iso_checksum_type": "sha1",
+      "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/ajenti-1.2-x86_64-qemu/",
+      "output_directory": "output/ajenti-base-x86_64-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
           "-m",
-          "1500"
+          "768"
         ],
         [
           "-device",
@@ -27,7 +47,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ajenti-1.2-x86_64-qemu/ajenti-1.2-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ajenti-base-x86_64-qemu/ajenti-base-x86_64.raw"
         ],
         [
           "-device",
@@ -43,29 +63,26 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "ajenti-1.2-x86_64"
+      "vm_name": "ajenti-base-x86_64"
     }
   ],
   "provisioners": [
     {
       "scripts": [
-        "scripts/diskfix.sh",
-        "scripts/ajenti.sh",
-        "scripts/cloud.sh",
-        "scripts/grubfix.sh",
-        "scripts/cloudinit-config.sh"
+        "scripts/base.sh",
+        "scripts/reboot.sh"
       ],
       "type": "shell"
+    },
+    {
+      "scripts": [
+        "scripts/ajenti.sh",
+        "scripts/cloudinit.sh",
+        "scripts/charmclean.sh",
+        "scripts/cleanup.sh"
+      ],
+      "pause_before": "30s",
+      "type": "shell"
     }
-  ],
-  "post-processors": [
-    [
-      {
-        "type": "compress",
-        "format": "bgzf",
-        "output": "output/ajenti-1.2-x86_64-compress/",
-        "only": ["qemu"]
-      }
-    ]
   ]
 }
