@@ -34,7 +34,7 @@
       "iso_checksum_type": "md5",
       "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04.2-server-amd64.iso",
       "net_device": "virtio-net",
-      "output_directory": "output/ajenti-base-x86_64-qemu/",
+      "output_directory": "output/ajenti-1.2-x86_64-qemu/",
       "machine_type": "pc-i440fx-1.7",
       "qemuargs": [
         [
@@ -47,7 +47,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ajenti-base-x86_64-qemu/ajenti-base-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ajenti-1.2-x86_64-qemu/ajenti-1.2-x86_64.raw"
         ],
         [
           "-device",
@@ -63,7 +63,7 @@
       "ssh_username": "root",
       "ssh_wait_timeout": "10000s",
       "type": "qemu",
-      "vm_name": "ajenti-base-x86_64"
+      "vm_name": "ajenti-1.2-x86_64"
     }
   ],
   "provisioners": [
