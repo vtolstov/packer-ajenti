@@ -58,7 +58,7 @@ rm -rf /usr/src/linux-headers*
 echo "==> Removing linux source"
 dpkg --list | awk '{ print $2 }' | grep linux-source | xargs apt-get -y purge
 echo "==> Removing development packages"
-dpkg --list | awk '{ print $2 }' | grep -- '-dev$' | xargs apt-get -y purge
+#dpkg --list | awk '{ print $2 }' | grep -- '-dev$' | xargs apt-get -y purge
 echo "==> Removing documentation"
 dpkg --list | awk '{ print $2 }' | grep -- '-doc$' | xargs apt-get -y purge
 echo "==> Removing development tools"
