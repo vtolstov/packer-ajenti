@@ -1,5 +1,6 @@
 #!/bin/sh -ex
 
+: <<COMMENT
 if [ -d /var/cache/lxc ]; then
     rm -rf /var/cache/lxc/*
 fi
@@ -11,5 +12,6 @@ if [ "x${names}" != "x" ]; then
         lxc-attach -n $name -- find /var/lib/apt -type f | xargs rm -f
     done
 fi
+COMMENT
 
 fstrim -v /
