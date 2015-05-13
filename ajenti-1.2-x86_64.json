@@ -92,6 +92,10 @@
         "format": "bgzf",
         "output": "output/ajenti-1.2-x86_64-compress/",
         "only": ["qemu"]
+      },
+      {
+        "type": "checksum",
+        "output": "output/ajenti-1.2-x86_64-compress/"
       }
     ]
   ]
