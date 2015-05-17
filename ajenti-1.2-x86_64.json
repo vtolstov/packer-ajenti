@@ -47,7 +47,7 @@
         ],
         [
           "-drive",
-          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ajenti-1.2-x86_64-qemu/ajenti-1.2-x86_64.raw"
+          "if=none,cache=unsafe,id=drive0,discard=unmap,file=output/ajenti-1.2-x86_64-qemu/ajenti-1.2-x86_64"
         ],
         [
           "-device",
