@@ -75,12 +75,13 @@
       {
         "type": "compress",
         "format": "bgzf",
-        "output": "output/{{.BuildName}}-compress/",
+        "metadata": true,
+        "output": "output/ajenti-1.2-x86_64-compress/",
         "only": ["qemu"]
       },
       {
         "type": "checksum",
-        "output": "output/{{.BuildName}}-compress/"
+        "output": "output/ajenti-1.2-x86_64-compress/"
       }
     ]
   ]
